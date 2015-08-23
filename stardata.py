@@ -33,15 +33,16 @@ if __name__ == '__main__':
 
     data = DataGenerator()
 
-
-    num_cust = 2000
+    # 10 million customers
+    num_cust = 10000000
     d_cust = {
         'key': range(1, num_cust),
         'id': [str('C'+str(item)) for item in range(1, num_cust)]
         #'cust_geo': ['NE','NW','SE','SW','MW']
     }
 
-    num_prod = 2000
+    # 2 million products
+    num_prod = 2000000
     d_prod = {
         'key': range(1, num_prod),
         'id': [str('P'+str(item)) for item in range(1, num_prod)]
@@ -54,8 +55,9 @@ if __name__ == '__main__':
     df_prod = data.create_dimension(d_prod, num_prod)
     df_prod.to_csv('dimprod.csv', header=['key','id'], index=False)
 
-    fact_rows = 300
-    date = ['20150101', '20150102']
+    # 50 million orders daily
+    fact_rows = 5000000
+    date = ['20150105']
 
     for date in date:
         d_fact = {
